@@ -75,42 +75,11 @@ const Booking = () => {
     }));
   };
 
-  // Payment status checking function
-  const checkPaymentStatus = async (sessionId, attempts = 0) => {
-    const maxAttempts = 5;
-    const pollInterval = 2000; // 2 seconds
-
-    if (attempts >= maxAttempts) {
-      toast.error('Payment status check timed out. Please contact us to confirm your booking.');
-      return;
-    }
-
-    try {
-      const statusData = await api.payment.getCheckoutStatus(sessionId);
-      
-      if (statusData.payment_status === 'paid') {
-        toast.success('Payment successful! Your booking has been confirmed. We\'ll contact you within 24 hours.');
-        // Clear URL parameters
-        window.history.replaceState({}, document.title, window.location.pathname);
-        return;
-      } else if (statusData.status === 'expired') {
-        toast.error('Payment session expired. Please try booking again.');
-        return;
-      }
-
-      // If payment is still pending, continue polling
-      setTimeout(() => checkPaymentStatus(sessionId, attempts + 1), pollInterval);
-    } catch (error) {
-      console.error('Error checking payment status:', error);
-      toast.error('Error checking payment status. Please contact us to confirm your booking.');
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!selectedDate || !selectedService || !formData.ownerName || !formData.phone || !formData.dogName || !paymentMethod) {
-      toast.error("Please fill in all required fields including payment method");
+    if (!selectedDate || !selectedService || !formData.ownerName || !formData.phone || !formData.dogName) {
+      toast.error("Please fill in all required fields");
       return;
     }
 
@@ -128,37 +97,16 @@ const Booking = () => {
         service_id: selectedService,
         booking_date: selectedDate.toISOString().split('T')[0],
         special_needs: formData.specialNeeds || null,
-        emergency_contact: formData.emergencyContact || null,
-        payment_method: paymentMethod
+        emergency_contact: formData.emergencyContact || null
       };
 
       const bookingResponse = await api.booking.create(bookingData);
 
-      if (paymentMethod === 'in_person') {
-        // In-person payment - booking is created
-        toast.success("Booking created successfully! Payment will be collected in person. We'll contact you within 24 hours to confirm.");
-        
-        // Reset form
-        setSelectedDate(null);
-        setSelectedService("");
-        setPaymentMethod("stripe");
-        setFormData({
-          ownerName: "",
-          phone: "",
-          email: "",
-          dogName: "",
-          dogBreed: "",
-          dogAge: "",
-          specialNeeds: "",
-          emergencyContact: ""
-        });
-      } else {
-        // Stripe payment - redirect to checkout
-        const checkoutResponse = await api.payment.createCheckoutSession(bookingResponse.booking_id);
-        
-        // Redirect to Stripe Checkout
-        window.location.href = checkoutResponse.checkout_url;
-      }
+      // Show confirmation
+      setConfirmationDetails(bookingResponse);
+      setBookingConfirmed(true);
+      
+      toast.success("Booking confirmed successfully! " + (bookingResponse.email_sent ? "Confirmation email sent." : ""));
       
     } catch (error) {
       console.error('Error submitting booking:', error);
@@ -166,6 +114,23 @@ const Booking = () => {
     } finally {
       setSubmitting(false);
     }
+  };
+
+  const startNewBooking = () => {
+    setBookingConfirmed(false);
+    setConfirmationDetails(null);
+    setSelectedDate(null);
+    setSelectedService("");
+    setFormData({
+      ownerName: "",
+      phone: "",
+      email: "",
+      dogName: "",
+      dogBreed: "",
+      dogAge: "",
+      specialNeeds: "",
+      emergencyContact: ""
+    });
   };
 
   const selectedServiceDetails = services.find(service => service.id === selectedService);
