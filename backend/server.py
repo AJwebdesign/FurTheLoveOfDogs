@@ -10,9 +10,8 @@ from typing import List
 import json
 from datetime import datetime, date
 
-# Import models and database
+# Import models
 from models import *
-from database import *
 
 # Import payment integration
 from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
