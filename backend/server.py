@@ -24,8 +24,9 @@ async def seed_data():
     services_exist = await services_collection.count_documents({}) > 0
     unavailable_dates_exist = await unavailable_dates_collection.count_documents({}) > 0
     
-    # Seed Services
-    services_data = [
+    # Seed Services (only if not exists)
+    if not services_exist:
+        services_data = [
         {
             "id": "1",
             "name": "Cage-Free Sleepovers",
