@@ -426,10 +426,17 @@ async def create_booking_request(booking_data: BookingCreate):
     )
     await unavailable_dates_collection.insert_one(unavailable_date.dict())
     
-    # Send confirmation email (if email provided)
+    # Send confirmation email (if email provided and service is configured)
     email_sent = False
     if booking.email:
-        email_sent = await send_booking_confirmation_email(booking, service)
+        if EMAIL_ENABLED:
+            email_sent = await send_booking_confirmation_email(booking, service)
+        else:
+            # Demo mode - log email content instead of sending
+            email_logged = await log_email_content(booking, service)
+            if email_logged:
+                logging.info("📧 Email service not configured - email content logged above")
+            email_sent = False  # Still return False since no actual email was sent
     
     # Log booking for staff notification
     await log_booking_for_staff(booking, service)
