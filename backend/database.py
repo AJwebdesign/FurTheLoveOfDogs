@@ -4,10 +4,8 @@ import os
 from datetime import datetime, date
 import json
 
-# Database connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# Database connection - import from main server.py environment
+# This will be set by server.py when it imports this module
 
 # Collections
 services_collection = db.services
