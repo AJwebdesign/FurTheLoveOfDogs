@@ -209,7 +209,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mockReviews.slice(0, 6).map((review) => (
+            {reviews.map((review) => (
               <Card key={review.id} className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300 group">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-3">
