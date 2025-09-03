@@ -124,44 +124,44 @@ export const mockBookedDates = [
 ];
 
 export const mockFamilyStory = {
-  title: "Three Generations of Dog Love",
-  founded: "2009",
-  story: `What started as a simple love for dogs has grown into a three-generation family business that has been serving the Happy Valley community for over 15 years.
+  title: "Serving Watertown's Four-Legged Family Members",
+  founded: "established",
+  story: `Located in the heart of Watertown, Wisconsin, Fur the Love of Dogs has become a trusted name in premium pet care services. Our facility at 106 S 3rd Street serves as a second home for dogs throughout the Watertown community and surrounding areas.
 
-It all began when our founder, Margaret Thompson, started watching neighborhood dogs in her backyard while their families were away. Word spread quickly about her natural way with animals and genuine care for each pup that stayed with her.
+What sets us apart is our commitment to providing both cage-free sleepovers and professional grooming services in a warm, welcoming environment. We understand that every dog is unique, which is why we offer both social cage-free environments for outgoing pups and private room accommodations for dogs who prefer a quieter setting.
 
-Today, the business is run by Margaret alongside her daughter Susan and granddaughter Emily. Each brings their own special touch to the care we provide - Margaret's wisdom and experience, Susan's business expertise, and Emily's fresh energy and modern training techniques.
+Our experienced team takes pride in treating each dog as an individual, ensuring they receive the specific care and attention they need. From energetic puppies who love to socialize during daycare to senior dogs who appreciate a gentler approach, we tailor our services to meet every dog's personality and needs.
 
-We've cared for over 1,000 dogs throughout the years, from tiny puppies taking their first steps away from home to senior dogs who need a little extra TLC. Every dog that comes through our doors becomes part of our extended family.
+Safety and health are our top priorities. We require all dogs to be current on their vaccinations including Rabies, Distemper, and Bordetella, and maintain strict standards for cleanliness and care. This commitment to excellence has made us a trusted choice for Watertown families who want the best for their furry companions.
 
-Our facility has grown from Margaret's backyard to a beautiful 5-acre property complete with indoor climate-controlled kennels, outdoor play areas, grooming stations, and training facilities. But what hasn't changed is our commitment to treating every dog as if they were our own.`,
+Whether you need daily daycare, overnight boarding, or professional grooming services, we're here to provide exceptional care with the love and attention your dog deserves.`,
   
   familyMembers: [
     {
-      name: "Margaret Thompson",
-      role: "Founder & Head of Operations",
-      bio: "With over 15 years of experience, Margaret's intuitive understanding of dog behavior and needs forms the foundation of our care approach.",
+      name: "Our Dedicated Team",
+      role: "Professional Pet Care Specialists",
+      bio: "Our experienced staff members are passionate about providing exceptional care for every dog that enters our facility.",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=300&fit=crop&crop=face"
     },
     {
-      name: "Susan Thompson-Williams",
-      role: "Business Manager & Grooming Specialist", 
-      bio: "Susan combines her business acumen with professional grooming expertise, ensuring both excellent service and beautiful pups.",
+      name: "Grooming Specialists",
+      role: "Fur Salon Professionals", 
+      bio: "Our skilled groomers provide personalized grooming services tailored to each dog's specific needs and breed requirements.",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
     },
     {
-      name: "Emily Williams",
-      role: "Training Coordinator & Activities Director",
-      bio: "Our youngest team member brings modern training techniques and boundless energy to keep all our furry guests happy and engaged.",
+      name: "Daycare Supervisors",
+      role: "Play & Socialization Experts",
+      bio: "Our trained supervisors ensure safe, fun, and engaging daycare experiences for dogs of all sizes and temperaments.",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
     }
   ],
 
   values: [
-    "Every dog deserves individual attention and care",
-    "Family-owned means family-focused service", 
-    "Continuous learning and improvement in animal care",
-    "Building lasting relationships with pets and families",
-    "Creating a safe, fun environment for all dogs"
+    "Every dog receives individualized care and attention",
+    "Safety and health are our highest priorities", 
+    "Professional service with a personal touch",
+    "Building trust with pets and their families",
+    "Creating a comfortable, stress-free environment"
   ]
 };
