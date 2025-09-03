@@ -80,7 +80,10 @@ const Footer = () => {
 
         <div className="border-t border-orange-800 mt-8 pt-8 text-center">
           <p className="text-orange-200">
-            © 2024 Fur the Love of Dogs. Made with{" "}
+            © 2024 Fur the Love of Dogs | FurTheLoveOfDogs.com
+          </p>
+          <p className="text-orange-300 text-sm mt-2">
+            Made with{" "}
             <Heart className="inline h-4 w-4 text-red-400" fill="currentColor" />{" "}
             for your furry friends.
           </p>
