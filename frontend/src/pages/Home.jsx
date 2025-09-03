@@ -157,8 +157,12 @@ const Home = () => {
                     {service.name}
                   </CardTitle>
                   <div className="flex items-baseline space-x-2">
-                    <span className="text-3xl font-bold text-orange-600">{service.price}</span>
-                    <span className="text-gray-500">{service.period}</span>
+                    <span className="text-3xl font-bold text-orange-600">
+                      {service.name === "Fur Salon Grooming" ? "Call for pricing" : `$${service.price}`}
+                    </span>
+                    {service.name !== "Fur Salon Grooming" && (
+                      <span className="text-gray-500">{service.period}</span>
+                    )}
                   </div>
                   <CardDescription className="text-gray-600">
                     {service.description}
