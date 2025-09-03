@@ -95,12 +95,13 @@ async def seed_data():
             "active": True,
             "created_at": datetime.utcnow()
         }
-    ]
+        ]
+        
+        await services_collection.insert_many(services_data)
     
-    await services_collection.insert_many(services_data)
-    
-    # Seed Reviews
-    reviews_data = [
+    # Seed Reviews (only if services were just created)
+    if not services_exist:
+        reviews_data = [
         {
             "id": "1",
             "customer_name": "Lisa M.",
