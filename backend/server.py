@@ -441,15 +441,24 @@ async def create_booking_request(booking_data: BookingCreate):
     # Log booking for staff notification
     await log_booking_for_staff(booking, service)
     
+    # Create appropriate message based on email status
+    if booking.email and EMAIL_ENABLED and email_sent:
+        message = "Booking confirmed successfully! Confirmation email sent. Payment will be collected in person."
+    elif booking.email and not EMAIL_ENABLED:
+        message = "Booking confirmed successfully! We'll contact you within 24 hours. Payment will be collected in person."
+    else:
+        message = "Booking confirmed successfully! We'll contact you within 24 hours. Payment will be collected in person."
+    
     return {
         "booking_id": booking.id,
-        "message": "Booking confirmed successfully! Payment will be collected in person.",
+        "message": message,
         "total_amount": total_amount,
         "service_name": service.name,
         "booking_date": booking.booking_date.isoformat(),
         "pickup_date": booking.pickup_date.isoformat() if booking.pickup_date else None,
         "nights_count": nights_count,
         "email_sent": email_sent,
+        "email_service_enabled": EMAIL_ENABLED,
         "payment_method": "in_person"
     }
 
