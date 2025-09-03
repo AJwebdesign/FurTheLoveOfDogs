@@ -264,6 +264,7 @@ const Booking = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-orange-800">
                   <div>
                     <p><strong>Phone:</strong> (920) 285-2706</p>
+                    <p><strong>Website:</strong> FurTheLoveOfDogs.com</p>
                     <p><strong>Address:</strong> 106 S 3rd Street</p>
                     <p>Watertown, WI 53094</p>
                   </div>
