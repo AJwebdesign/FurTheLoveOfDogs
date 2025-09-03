@@ -345,15 +345,15 @@ const Booking = () => {
                   <Phone className="h-6 w-6 text-white" />
                 </div>
                 <h4 className="font-semibold text-orange-900">Call Us</h4>
-                <p className="text-orange-700">(555) 123-4567</p>
+                <p className="text-orange-700">(920) 285-2706</p>
               </div>
               
               <div className="flex flex-col items-center space-y-2">
                 <div className="bg-orange-500 rounded-full p-3">
                   <Mail className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="font-semibold text-orange-900">Email Us</h4>
-                <p className="text-orange-700">hello@furthelove.com</p>
+                <h4 className="font-semibold text-orange-900">Visit Us</h4>
+                <p className="text-orange-700">106 S 3rd Street<br />Watertown, WI 53094</p>
               </div>
               
               <div className="flex flex-col items-center space-y-2">
@@ -361,7 +361,7 @@ const Booking = () => {
                   <Clock className="h-6 w-6 text-white" />
                 </div>
                 <h4 className="font-semibold text-orange-900">Hours</h4>
-                <p className="text-orange-700">Mon-Fri: 7am-7pm<br />Sat-Sun: 8am-6pm</p>
+                <p className="text-orange-700">Mon-Wed: 8am-4pm<br />Thu: 8am-5pm<br />Fri: 8am-3pm<br />Sun: By appointment</p>
               </div>
             </div>
           </CardContent>
