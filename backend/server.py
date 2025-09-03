@@ -25,7 +25,7 @@ async def seed_data():
     # Now seed fresh data every time
     
     # Seed Services
-        services_data = [
+    services_data = [
         {
             "id": "1",
             "name": "Cage-Free Sleepovers",
