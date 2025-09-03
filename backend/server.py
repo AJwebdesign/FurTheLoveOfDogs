@@ -372,8 +372,10 @@ async def create_booking_request(booking_data: BookingCreate):
         nights_count = (booking_data.pickup_date - booking_data.booking_date).days
         if nights_count < 1:
             raise HTTPException(status_code=400, detail="Pickup date must be after arrival date")
+        logging.info(f"Calculated {nights_count} nights for booking from {booking_data.booking_date} to {booking_data.pickup_date}")
     
     total_amount = service.price * nights_count
+    logging.info(f"Service: {service.name}, Nights: {nights_count}, Price: {service.price}, Total: {total_amount}")
     
     # Create booking with in-person payment
     booking = Booking(
