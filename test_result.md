@@ -107,51 +107,63 @@ user_problem_statement: "Test the complete dog kennel booking system for 'Fur th
 frontend:
   - task: "Homepage API Integration Test"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/Home.jsx"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
         - agent: "testing"
         - comment: "Need to test services and reviews loading from API, pricing display verification"
+        - working: true
+        - agent: "testing"
+        - comment: "✓ PASSED: Services and reviews loading correctly from API. All pricing displays verified: $45 sleepovers, $25/$17 daycare, Call for pricing grooming. API integration working properly."
 
   - task: "Booking Process End-to-End Test"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/frontend/src/pages/Booking.jsx"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
         - agent: "testing"
         - comment: "Need to test complete booking flow: service selection, date selection, form filling, submission, and confirmation"
+        - working: false
+        - agent: "testing"
+        - comment: "❌ CRITICAL ISSUE: Calendar component not showing available dates properly. Service selection works, form filling works, but date selection fails. Submit button becomes disabled because no date can be selected. Calendar shows 0 days available."
 
   - task: "UI/UX Theme and Responsiveness Test"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/Home.jsx"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
         - agent: "testing"
         - comment: "Need to verify warm fall color theme (orange/amber gradients), responsive design, loading states, form validation"
+        - working: true
+        - agent: "testing"
+        - comment: "Minor: React key warnings in console but core functionality works. ✓ Orange/amber gradient theme verified, mobile menu works, responsive design functional, form validation works correctly."
 
   - task: "Business Information Verification Test"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/components/Footer.jsx"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
         - agent: "testing"
         - comment: "Need to verify contact info (920) 285-2706, address 106 S 3rd Street Watertown WI, business hours, in-person payment messaging"
+        - working: true
+        - agent: "testing"
+        - comment: "✓ PASSED: All business information verified correctly - phone (920) 285-2706, address 106 S 3rd Street Watertown WI, business hours Mon-Wed 8am-4pm, Thu 8am-5pm, Fri 8am-3pm, in-person payment messaging clear."
 
 backend:
   - task: "API Services Endpoint Test"
