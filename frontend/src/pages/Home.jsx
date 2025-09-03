@@ -8,6 +8,42 @@ import { toast } from "sonner";
 import api from "../services/api";
 
 const Home = () => {
+  const [services, setServices] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [servicesData, reviewsData] = await Promise.all([
+          api.services.getAll(),
+          api.reviews.getAll(6) // Get 6 reviews for display
+        ]);
+        
+        setServices(servicesData);
+        setReviews(reviewsData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        toast.error('Failed to load page data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+          <p className="text-orange-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
