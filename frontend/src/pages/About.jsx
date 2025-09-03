@@ -182,7 +182,7 @@ const About = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Location</h4>
-                    <p className="text-gray-600">123 Dogwood Lane, Happy Valley, CA 94523</p>
+                    <p className="text-gray-600">106 S 3rd Street, Watertown, WI 53094</p>
                   </div>
                 </div>
                 
@@ -193,8 +193,10 @@ const About = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900">Hours</h4>
                     <p className="text-gray-600">
-                      Monday-Friday: 7am-7pm<br />
-                      Saturday-Sunday: 8am-6pm
+                      Monday-Wednesday: 8am-4pm<br />
+                      Thursday: 8am-5pm<br />
+                      Friday: 8am-3pm<br />
+                      Sunday: By appointment
                     </p>
                   </div>
                 </div>
