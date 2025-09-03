@@ -216,7 +216,7 @@ const Home = () => {
                     <div>
                       <h4 className="font-semibold text-gray-900">{review.name}</h4>
                       <p className="text-sm text-gray-500">
-                        {review.dogName} • {review.service}
+                        {review.dog_name} • {review.service_type}
                       </p>
                     </div>
                     <div className="flex items-center space-x-1">
