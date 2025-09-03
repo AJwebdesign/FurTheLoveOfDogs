@@ -24,8 +24,7 @@ async def seed_data():
     
     # Now seed fresh data every time
     
-    # Seed Services (only if not exists)
-    if not services_exist:
+    # Seed Services
         services_data = [
         {
             "id": "1",
