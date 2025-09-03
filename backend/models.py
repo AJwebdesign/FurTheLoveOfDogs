@@ -72,7 +72,9 @@ class Booking(BaseModel):
     dog_age: Optional[str] = None
     service_id: str
     service_name: str
-    booking_date: date
+    booking_date: date  # Start/arrival date
+    pickup_date: Optional[date] = None  # For cage-free sleepovers
+    nights_count: int = 1  # Number of nights (calculated)
     special_needs: Optional[str] = None
     emergency_contact: Optional[str] = None
     status: BookingStatus = BookingStatus.PENDING
