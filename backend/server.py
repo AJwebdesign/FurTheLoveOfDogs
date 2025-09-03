@@ -161,18 +161,18 @@ async def seed_data():
     
     # Seed unavailable dates (December 2024 & January 2025)
     unavailable_dates_data = [
-        {"id": "1", "date": date(2024, 12, 15), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "2", "date": date(2024, 12, 16), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "3", "date": date(2024, 12, 22), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "4", "date": date(2024, 12, 23), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "5", "date": date(2024, 12, 24), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "6", "date": date(2024, 12, 25), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "7", "date": date(2024, 12, 29), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "8", "date": date(2024, 12, 30), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "9", "date": date(2024, 12, 31), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "10", "date": date(2025, 1, 1), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "11", "date": date(2025, 1, 5), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "12", "date": date(2025, 1, 6), "reason": "booked", "created_at": datetime.utcnow()}
+        {"id": "1", "date": date(2024, 12, 15).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "2", "date": date(2024, 12, 16).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "3", "date": date(2024, 12, 22).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "4", "date": date(2024, 12, 23).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "5", "date": date(2024, 12, 24).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
+        {"id": "6", "date": date(2024, 12, 25).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
+        {"id": "7", "date": date(2024, 12, 29).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "8", "date": date(2024, 12, 30).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "9", "date": date(2024, 12, 31).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
+        {"id": "10", "date": date(2025, 1, 1).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
+        {"id": "11", "date": date(2025, 1, 5).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "12", "date": date(2025, 1, 6).isoformat(), "reason": "booked", "created_at": datetime.utcnow()}
     ]
     
     await unavailable_dates_collection.insert_many(unavailable_dates_data)
