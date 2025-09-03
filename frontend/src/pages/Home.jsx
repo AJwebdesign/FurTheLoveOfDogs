@@ -225,7 +225,7 @@ const Home = () => {
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{review.review}</p>
+                  <p className="text-gray-700 leading-relaxed">{review.review_text}</p>
                 </CardHeader>
                 <CardContent>
                   <p className="text-xs text-gray-500">{review.date}</p>
