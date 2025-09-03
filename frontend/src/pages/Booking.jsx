@@ -12,7 +12,9 @@ import { Calendar as CalendarIcon, Clock, Dog, Phone, Mail, User, DollarSign, Ch
 import api from "../services/api";
 
 const Booking = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null); // Arrival date
+  const [selectedPickupDate, setSelectedPickupDate] = useState(null); // Pickup date for sleepovers
+  const [dateSelectionStep, setDateSelectionStep] = useState(1); // 1 = arrival, 2 = pickup
   const [selectedService, setSelectedService] = useState("");
   const [services, setServices] = useState([]);
   const [unavailableDates, setUnavailableDates] = useState([]);
