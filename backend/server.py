@@ -213,6 +213,9 @@ EMAIL_USER = os.environ.get('EMAIL_USER', '')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')
 EMAIL_FROM = os.environ.get('EMAIL_FROM', 'noreply@FurTheLoveOfDogs.com')
 
+# Email service status
+EMAIL_ENABLED = bool(EMAIL_USER and EMAIL_PASSWORD)
+
 # Create the main app without a prefix
 app = FastAPI()
 
