@@ -130,6 +130,8 @@ const Booking = () => {
     setBookingConfirmed(false);
     setConfirmationDetails(null);
     setSelectedDate(null);
+    setSelectedPickupDate(null);
+    setDateSelectionStep(1);
     setSelectedService("");
     setFormData({
       ownerName: "",
