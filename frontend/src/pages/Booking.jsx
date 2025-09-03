@@ -420,16 +420,44 @@ const Booking = () => {
                   </div>
                 </div>
 
+                {/* Date Selection Display */}
                 {selectedDate && (
-                  <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 font-medium">
-                      Selected: {selectedDate.toLocaleDateString('en-US', { 
-                        weekday: 'long', 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      })}
-                    </p>
+                  <div className="mt-4 space-y-2">
+                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-green-800 font-medium">
+                        {isCageFreeService ? "Arrival Date: " : "Service Date: "}
+                        {selectedDate.toLocaleDateString('en-US', { 
+                          weekday: 'long', 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric' 
+                        })}
+                      </p>
+                    </div>
+                    
+                    {isCageFreeService && selectedPickupDate && (
+                      <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p className="text-blue-800 font-medium">
+                          Pickup Date: {selectedPickupDate.toLocaleDateString('en-US', { 
+                            weekday: 'long', 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                          })}
+                        </p>
+                        <p className="text-blue-600 text-sm mt-1">
+                          Total nights: {calculateNights()}
+                        </p>
+                      </div>
+                    )}
+                    
+                    {isCageFreeService && selectedDate && !selectedPickupDate && (
+                      <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <p className="text-yellow-800 text-sm">
+                          👆 Now click on the pickup date to complete your selection
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
               </CardContent>
