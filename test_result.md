@@ -168,15 +168,18 @@ frontend:
 backend:
   - task: "API Services Endpoint Test"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
         - agent: "testing"
         - comment: "Need to verify services API returns correct pricing: $45 sleepovers, $25/$17 daycare, $75 grooming"
+        - working: true
+        - agent: "testing"
+        - comment: "✓ PASSED: Services API working correctly. Returns proper pricing and service details. Frontend successfully loads and displays all services."
 
   - task: "Booking Creation API Test"
     implemented: true
@@ -189,6 +192,9 @@ backend:
         - working: "NA"
         - agent: "testing"
         - comment: "Need to test booking creation, date availability checking, confirmation response"
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Cannot fully test due to calendar date selection issue in frontend. API endpoints appear to be implemented correctly based on code review."
 
 metadata:
   created_by: "testing_agent"
