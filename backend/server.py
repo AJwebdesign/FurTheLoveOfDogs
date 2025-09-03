@@ -26,6 +26,10 @@ async def seed_data():
     services_exist = await services_collection.count_documents({}) > 0
     unavailable_dates_exist = await unavailable_dates_collection.count_documents({}) > 0
     
+    # Clear old unavailable dates to avoid duplicates
+    if unavailable_dates_exist:
+        await unavailable_dates_collection.delete_many({})
+    
     # Seed Services (only if not exists)
     if not services_exist:
         services_data = [
