@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -8,8 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Calendar } from "../components/ui/calendar";
 import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
-import { Calendar as CalendarIcon, Clock, Dog, Phone, Mail, User } from "lucide-react";
-import { mockServices, mockBookedDates } from "../data/mockData";
+import { Calendar as CalendarIcon, Clock, Dog, Phone, Mail, User, CreditCard, MapPin } from "lucide-react";
+import api from "../services/api";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
