@@ -14,11 +14,12 @@ import api from "../services/api";
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedService, setSelectedService] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("stripe");
   const [services, setServices] = useState([]);
   const [unavailableDates, setUnavailableDates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [confirmationDetails, setConfirmationDetails] = useState(null);
   const [formData, setFormData] = useState({
     ownerName: "",
     phone: "",
@@ -29,19 +30,6 @@ const Booking = () => {
     specialNeeds: "",
     emergencyContact: ""
   });
-
-  // Check URL parameters for payment status
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status');
-    const sessionId = urlParams.get('session_id');
-
-    if (status === 'success' && sessionId) {
-      checkPaymentStatus(sessionId);
-    } else if (status === 'cancelled') {
-      toast.error('Payment was cancelled. Please try again.');
-    }
-  }, []);
 
   // Load initial data
   useEffect(() => {
