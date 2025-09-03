@@ -18,10 +18,13 @@ const Footer = () => {
                 <p className="text-orange-200 text-sm">Premium Dog Care</p>
               </div>
             </div>
-            <p className="text-orange-100 leading-relaxed mb-6">
+            <p className="text-orange-100 leading-relaxed mb-4">
               Providing exceptional cage-free boarding, daycare, and professional grooming services 
               to the Watertown community. We treat every dog with the love and care they deserve.
             </p>
+            <div className="text-orange-200 mb-4">
+              <p className="text-sm font-medium">🌐 FurTheLoveOfDogs.com</p>
+            </div>
             <div className="flex items-center space-x-2 text-orange-200">
               <Heart className="h-4 w-4" />
               <span className="text-sm">Trusted by Watertown families</span>
