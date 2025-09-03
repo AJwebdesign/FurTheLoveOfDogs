@@ -242,7 +242,7 @@ const Booking = () => {
                 {selectedServiceDetails && (
                   <div className="mt-4 p-4 bg-orange-50 rounded-lg">
                     <h4 className="font-semibold text-orange-900 mb-2">
-                      {selectedServiceDetails.name} - {selectedServiceDetails.price} {selectedServiceDetails.period}
+                      {selectedServiceDetails.name} - {selectedServiceDetails.name === "Fur Salon Grooming" ? "Call for pricing" : `$${selectedServiceDetails.price} ${selectedServiceDetails.period}`}
                     </h4>
                     <p className="text-orange-700 text-sm mb-3">{selectedServiceDetails.description}</p>
                     <ul className="space-y-1">
