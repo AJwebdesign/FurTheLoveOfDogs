@@ -63,48 +63,48 @@ export const mockServices = [
 export const mockReviews = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Lisa M.",
     rating: 5,
     date: "2 weeks ago",
-    review: "Absolutely wonderful! My golden retriever Max had the best time here. The staff truly cares about each dog and sends updates throughout the day. I never worry when Max is at Fur the Love of Dogs!",
-    dogName: "Max",
-    service: "Overnight Boarding"
+    review: "The cage-free sleepovers are amazing! My dog Buddy loves staying here. The staff is so caring and professional. I never worry when he's at Fur the Love of Dogs - he comes home happy and well-cared for.",
+    dogName: "Buddy",
+    service: "Cage-Free Sleepovers"
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Tom & Karen W.",
     rating: 5,
     date: "1 month ago", 
-    review: "The family atmosphere here is incredible. You can tell this is more than just a business - they genuinely love what they do. Bella always comes home happy and tired from all the fun activities.",
-    dogName: "Bella",
-    service: "Daycare Services"
+    review: "We've been using their daycare services for months now and couldn't be happier. Sadie gets great exercise and socialization. The staff knows every dog by name and treats them like their own.",
+    dogName: "Sadie",
+    service: "Dog Daycare"
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
+    name: "Michelle P.",
     rating: 5,
     date: "3 weeks ago",
-    review: "Outstanding grooming services! Rocky looked absolutely handsome after his session. The attention to detail and gentle care they provide is unmatched. Highly recommend!",
-    dogName: "Rocky",
-    service: "Grooming Services"
+    review: "The grooming services are top-notch! Max always looks fantastic after his appointments. The groomers are gentle and skilled, and they really care about making each dog comfortable.",
+    dogName: "Max",
+    service: "Fur Salon Grooming"
   },
   {
     id: 4,
-    name: "David Thompson",
+    name: "John D.",
     rating: 5,
     date: "1 week ago",
-    review: "The training program worked wonders for our rescue pup Luna. The patient, loving approach helped her gain confidence and learn basic commands. Thank you for helping our family!",
-    dogName: "Luna", 
-    service: "Training Programs"
+    review: "Great experience with the cage-free environment. My two dogs, Jake and Luna, love playing with the other dogs. The meet and greet process was thorough and professional.",
+    dogName: "Jake & Luna", 
+    service: "Cage-Free Sleepovers"
   },
   {
     id: 5,
-    name: "Jennifer Martinez",
+    name: "Patricia R.",
     rating: 5,
     date: "2 months ago",
-    review: "I've been bringing Charlie here for over a year now. The consistency of care and the genuine love they show each dog is remarkable. It's like leaving your pup with family!",
-    dogName: "Charlie",
-    service: "Overnight Boarding"
+    review: "Fantastic daycare service! My senior dog Chester gets gentle, individualized attention. They understand that older dogs have different needs. Highly recommend this place!",
+    dogName: "Chester",
+    service: "Dog Daycare"
   }
 ];
 
