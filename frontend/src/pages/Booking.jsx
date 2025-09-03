@@ -226,12 +226,12 @@ const Booking = () => {
                     <SelectValue placeholder="Choose a service..." />
                   </SelectTrigger>
                   <SelectContent>
-                    {mockServices.map((service) => (
-                      <SelectItem key={service.id} value={service.id.toString()}>
+                    {services.map((service) => (
+                      <SelectItem key={service.id} value={service.id}>
                         <div className="flex justify-between items-center w-full">
                           <span>{service.name}</span>
                           <span className="text-orange-600 font-semibold ml-4">
-                            {service.price} {service.period}
+                            {service.name === "Fur Salon Grooming" ? "Call for pricing" : `$${service.price} ${service.period}`}
                           </span>
                         </div>
                       </SelectItem>
