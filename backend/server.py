@@ -22,11 +22,16 @@ from email.mime.multipart import MIMEMultipart
 async def seed_data():
     """Seed the database with initial data"""
     
-    # Check if services data already exists
+    # Check if data already exists and clear to avoid duplicates
     services_exist = await services_collection.count_documents({}) > 0
+    reviews_exist = await reviews_collection.count_documents({}) > 0
     unavailable_dates_exist = await unavailable_dates_collection.count_documents({}) > 0
     
-    # Clear old unavailable dates to avoid duplicates
+    # Clear existing data to avoid duplicates
+    if services_exist:
+        await services_collection.delete_many({})
+    if reviews_exist:
+        await reviews_collection.delete_many({})
     if unavailable_dates_exist:
         await unavailable_dates_collection.delete_many({})
     
