@@ -294,7 +294,7 @@ async def create_booking_request(booking_data: BookingCreate):
     # Check if date is available
     booking_date_str = booking_data.booking_date.isoformat()
     existing_unavailable = await unavailable_dates_collection.find_one({
-        "date": booking_data.booking_date
+        "date": booking_date_str
     })
     
     if existing_unavailable:
