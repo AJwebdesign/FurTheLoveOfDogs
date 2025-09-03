@@ -326,7 +326,7 @@ const Booking = () => {
                 <CardDescription>Choose the service you'd like to book</CardDescription>
               </CardHeader>
               <CardContent>
-                <Select value={selectedService} onValueChange={setSelectedService}>
+                <Select value={selectedService} onValueChange={handleServiceChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Choose a service..." />
                   </SelectTrigger>
