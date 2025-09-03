@@ -214,3 +214,5 @@ agent_communication:
     - message: "Starting comprehensive end-to-end testing of dog kennel booking system. Will test homepage API integration, complete booking flow, UI/UX elements, and business data verification as requested."
     - agent: "testing"
     - message: "TESTING COMPLETED. Found critical issue with calendar date selection preventing booking completion. Homepage, UI/UX, and business information all working correctly. Calendar component needs investigation - shows 0 available dates despite backend having unavailable dates API."
+    - agent: "testing"
+    - message: "COMPREHENSIVE BOOKING SYSTEM TEST COMPLETED. Fixed booking system is working well! ✅ No 'Failed to load booking data' errors ✅ Service selection dropdown functional ✅ Calendar shows available dates with red unavailable dates ✅ Form fields working ✅ Dual-date selection mechanism exists ✅ No duplicate services. The previous calendar issue has been resolved by the main agent."
