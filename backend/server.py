@@ -380,35 +380,43 @@ async def create_booking_request(booking_data: BookingCreate):
     if existing_unavailable:
         raise HTTPException(status_code=400, detail="Selected date is not available")
     
-    # Create booking
+    # Create booking with in-person payment
     booking = Booking(
         **booking_data.dict(),
         service_name=service.name,
         total_amount=service.price,
-        payment_required=(booking_data.payment_method == PaymentMethod.STRIPE)
+        payment_method=PaymentMethod.IN_PERSON,
+        payment_required=True,
+        payment_status=PaymentStatus.PENDING,
+        status=BookingStatus.CONFIRMED  # Auto-confirm in-person bookings
     )
     
     # Save to database
     await bookings_collection.insert_one(booking.dict())
     
-    # If payment method is in-person, mark as confirmed
-    if booking_data.payment_method == PaymentMethod.IN_PERSON:
-        await bookings_collection.update_one(
-            {"id": booking.id},
-            {"$set": {"payment_status": PaymentStatus.PENDING}}
-        )
-        return {
-            "booking_id": booking.id,
-            "message": "Booking created successfully. Payment will be collected in person.",
-            "payment_required": False
-        }
+    # Add booking date to unavailable dates
+    unavailable_date = UnavailableDate(
+        date=booking_date_str,
+        reason="booked"
+    )
+    await unavailable_dates_collection.insert_one(unavailable_date.dict())
     
-    # If Stripe payment, return booking ID for payment processing
+    # Send confirmation email (if email provided)
+    email_sent = False
+    if booking.email:
+        email_sent = await send_booking_confirmation_email(booking, service)
+    
+    # Log booking for staff notification
+    await log_booking_for_staff(booking, service)
+    
     return {
         "booking_id": booking.id,
-        "message": "Booking created. Please proceed with payment.",
-        "payment_required": True,
-        "amount": service.price
+        "message": "Booking confirmed successfully! Payment will be collected in person.",
+        "total_amount": service.price,
+        "service_name": service.name,
+        "booking_date": booking_date_str,
+        "email_sent": email_sent,
+        "payment_method": "in_person"
     }
 
 # Payment endpoints
