@@ -203,14 +203,14 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Homepage API Integration Test"
     - "Booking Process End-to-End Test"
-    - "UI/UX Theme and Responsiveness Test"
-    - "Business Information Verification Test"
-  stuck_tasks: []
-  test_all: true
-  test_priority: "high_first"
+  stuck_tasks:
+    - "Booking Process End-to-End Test"
+  test_all: false
+  test_priority: "stuck_first"
 
 agent_communication:
     - agent: "testing"
     - message: "Starting comprehensive end-to-end testing of dog kennel booking system. Will test homepage API integration, complete booking flow, UI/UX elements, and business data verification as requested."
+    - agent: "testing"
+    - message: "TESTING COMPLETED. Found critical issue with calendar date selection preventing booking completion. Homepage, UI/UX, and business information all working correctly. Calendar component needs investigation - shows 0 available dates despite backend having unavailable dates API."
