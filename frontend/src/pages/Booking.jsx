@@ -14,6 +14,11 @@ import api from "../services/api";
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedService, setSelectedService] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("stripe");
+  const [services, setServices] = useState([]);
+  const [unavailableDates, setUnavailableDates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     ownerName: "",
     phone: "",
@@ -25,8 +30,43 @@ const Booking = () => {
     emergencyContact: ""
   });
 
-  // Convert mock booked dates to Date objects for calendar
-  const bookedDates = mockBookedDates.map(dateStr => new Date(dateStr));
+  // Check URL parameters for payment status
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    const sessionId = urlParams.get('session_id');
+
+    if (status === 'success' && sessionId) {
+      checkPaymentStatus(sessionId);
+    } else if (status === 'cancelled') {
+      toast.error('Payment was cancelled. Please try again.');
+    }
+  }, []);
+
+  // Load initial data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [servicesData, unavailableDatesData] = await Promise.all([
+          api.services.getAll(),
+          api.booking.getUnavailableDates()
+        ]);
+        
+        setServices(servicesData);
+        setUnavailableDates(unavailableDatesData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        toast.error('Failed to load booking data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Convert unavailable dates to Date objects for calendar
+  const bookedDates = unavailableDates.map(dateStr => new Date(dateStr));
   
   const isDateBooked = (date) => {
     return bookedDates.some(bookedDate => 
