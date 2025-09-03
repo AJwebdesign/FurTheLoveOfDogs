@@ -387,8 +387,12 @@ async def create_booking_request(booking_data: BookingCreate):
         status=BookingStatus.CONFIRMED  # Auto-confirm in-person bookings
     )
     
-    # Save to database
-    await bookings_collection.insert_one(booking.dict())
+    # Save to database - convert date objects to ISO strings for MongoDB
+    booking_dict = booking.dict()
+    booking_dict['booking_date'] = booking.booking_date.isoformat()
+    if booking.pickup_date:
+        booking_dict['pickup_date'] = booking.pickup_date.isoformat()
+    await bookings_collection.insert_one(booking_dict)
     
     # Add booking date to unavailable dates
     unavailable_date = UnavailableDate(
