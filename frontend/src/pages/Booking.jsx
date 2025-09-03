@@ -371,7 +371,13 @@ const Booking = () => {
                   <span>Select Date</span>
                 </CardTitle>
                 <CardDescription>
-                  Choose your preferred date. Dates in red are unavailable.
+                  {isCageFreeService ? (
+                    dateSelectionStep === 1 ? 
+                      "First, select your dog's arrival date. Dates in red are unavailable." :
+                      "Now select the pickup date. Dates in red are unavailable."
+                  ) : (
+                    "Choose your preferred date. Dates in red are unavailable."
+                  )}
                 </CardDescription>
               </CardHeader>
               <CardContent>
