@@ -589,10 +589,18 @@ const Booking = () => {
                         <DollarSign className="h-6 w-6 text-orange-600" />
                         <div>
                           <div className="text-2xl font-bold text-orange-900">
-                            ${selectedServiceDetails.price}
+                            ${calculateTotal()}
+                            {isCageFreeService && calculateNights() > 1 && (
+                              <span className="text-base ml-2 text-orange-700">
+                                (${selectedServiceDetails.price} × {calculateNights()} nights)
+                              </span>
+                            )}
                           </div>
                           <div className="text-sm text-orange-700">
-                            {selectedServiceDetails.period}
+                            {isCageFreeService && calculateNights() > 1 ? 
+                              `${calculateNights()} nights total` : 
+                              selectedServiceDetails.period
+                            }
                           </div>
                         </div>
                       </div>
