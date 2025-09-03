@@ -80,28 +80,14 @@ export const bookingAPI = {
   }
 };
 
-// Payment API
-export const paymentAPI = {
-  createCheckoutSession: async (bookingId) => {
+// Booking confirmation API
+export const confirmationAPI = {
+  getBookingDetails: async (bookingId) => {
     try {
-      const originUrl = window.location.origin;
-      const response = await apiClient.post('/payments/checkout/session', {
-        booking_id: bookingId,
-        origin_url: originUrl
-      });
+      const response = await apiClient.get(`/bookings/${bookingId}`);
       return response.data;
     } catch (error) {
-      console.error('Error creating checkout session:', error);
-      throw error;
-    }
-  },
-
-  getCheckoutStatus: async (sessionId) => {
-    try {
-      const response = await apiClient.get(`/payments/checkout/status/${sessionId}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error getting checkout status:', error);
+      console.error('Error fetching booking details:', error);
       throw error;
     }
   }
