@@ -365,11 +365,22 @@ async def create_booking_request(booking_data: BookingCreate):
     if existing_unavailable:
         raise HTTPException(status_code=400, detail="Selected date is not available")
     
+    # Calculate nights and total amount for cage-free sleepovers
+    nights_count = 1
+    if booking_data.pickup_date and service.name == "Cage-Free Sleepovers":
+        # Calculate number of nights between arrival and pickup
+        nights_count = (booking_data.pickup_date - booking_data.booking_date).days
+        if nights_count < 1:
+            raise HTTPException(status_code=400, detail="Pickup date must be after arrival date")
+    
+    total_amount = service.price * nights_count
+    
     # Create booking with in-person payment
     booking = Booking(
         **booking_data.dict(),
         service_name=service.name,
-        total_amount=service.price,
+        nights_count=nights_count,
+        total_amount=total_amount,
         payment_method=PaymentMethod.IN_PERSON,
         payment_required=True,
         payment_status=PaymentStatus.PENDING,
