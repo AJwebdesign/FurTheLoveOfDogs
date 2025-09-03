@@ -378,17 +378,23 @@ const Booking = () => {
                 <Calendar
                   mode="single"
                   selected={selectedDate}
-                  onSelect={setSelectedDate}
+                  onSelect={handleDateSelect}
                   disabled={(date) => isPastDate(date) || isDateBooked(date)}
                   className="rounded-md border border-orange-200"
                   modifiers={{
-                    booked: bookedDates
+                    booked: bookedDates,
+                    pickup: selectedPickupDate ? [selectedPickupDate] : []
                   }}
                   modifiersStyles={{
                     booked: { 
                       backgroundColor: '#dc2626', 
                       color: 'white',
                       textDecoration: 'line-through'
+                    },
+                    pickup: {
+                      backgroundColor: '#10b981',
+                      color: 'white',
+                      borderRadius: '4px'
                     }
                   }}
                 />
