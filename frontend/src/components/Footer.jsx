@@ -19,12 +19,12 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-orange-100 leading-relaxed mb-6">
-              A family-owned business dedicated to providing exceptional care for your beloved pets. 
-              With over 15 years of experience, we treat every dog as if they were our own.
+              Providing exceptional cage-free boarding, daycare, and professional grooming services 
+              to the Watertown community. We treat every dog with the love and care they deserve.
             </p>
             <div className="flex items-center space-x-2 text-orange-200">
               <Heart className="h-4 w-4" />
-              <span className="text-sm">Trusted by over 1,000 happy families</span>
+              <span className="text-sm">Trusted by Watertown families</span>
             </div>
           </div>
 
