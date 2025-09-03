@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Calendar } from "../components/ui/calendar";
 import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
-import { Calendar as CalendarIcon, Clock, Dog, Phone, Mail, User, CreditCard, MapPin } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, Dog, Phone, Mail, User, DollarSign, CheckCircle } from "lucide-react";
 import api from "../services/api";
 
 const Booking = () => {
