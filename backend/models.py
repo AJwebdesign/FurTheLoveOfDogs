@@ -93,6 +93,7 @@ class BookingCreate(BaseModel):
     dog_age: Optional[str] = None
     service_id: str
     booking_date: date
+    pickup_date: Optional[date] = None  # For cage-free sleepovers
     special_needs: Optional[str] = None
     emergency_contact: Optional[str] = None
 
