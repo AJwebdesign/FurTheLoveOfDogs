@@ -195,16 +195,7 @@ async def update_booking(booking_id: str, update_data: dict):
         {"$set": update_data}
     )
 
-async def get_payment_transaction_by_session_id(session_id: str):
-    transaction_doc = await payment_transactions_collection.find_one({"stripe_session_id": session_id})
-    return PaymentTransaction(**transaction_doc) if transaction_doc else None
-
-async def update_payment_transaction(transaction_id: str, update_data: dict):
-    update_data["updated_at"] = datetime.utcnow()
-    await payment_transactions_collection.update_one(
-        {"id": transaction_id},
-        {"$set": update_data}
-    )
+# Remove payment transaction functions - not needed for in-person payments
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
