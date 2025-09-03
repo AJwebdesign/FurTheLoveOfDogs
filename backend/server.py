@@ -225,7 +225,13 @@ api_router = APIRouter(prefix="/api")
 # Email notification functions
 async def send_booking_confirmation_email(booking: Booking, service: Service):
     """Send booking confirmation email to customer"""
-    if not booking.email or not EMAIL_USER:
+    if not booking.email:
+        logging.info("No email provided for booking - skipping email notification")
+        return False
+        
+    if not EMAIL_ENABLED:
+        logging.warning("Email service not configured - cannot send confirmation email")
+        logging.info("To enable emails, set EMAIL_USER and EMAIL_PASSWORD environment variables")
         return False
     
     try:
