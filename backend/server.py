@@ -13,8 +13,10 @@ from datetime import datetime, date
 # Import models
 from models import *
 
-# Import payment integration
-from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
+# Email/SMS notification imports
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Database helper functions
 async def seed_data():
