@@ -20,7 +20,6 @@ class PaymentStatus(str, Enum):
     EXPIRED = "expired"
 
 class PaymentMethod(str, Enum):
-    STRIPE = "stripe"
     IN_PERSON = "in_person"
 
 # Service Models
