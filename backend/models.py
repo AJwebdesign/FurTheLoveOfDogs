@@ -76,11 +76,10 @@ class Booking(BaseModel):
     special_needs: Optional[str] = None
     emergency_contact: Optional[str] = None
     status: BookingStatus = BookingStatus.PENDING
-    payment_method: PaymentMethod
+    payment_method: PaymentMethod = PaymentMethod.IN_PERSON
     payment_required: bool = True
     total_amount: float
     payment_status: PaymentStatus = PaymentStatus.PENDING
-    stripe_session_id: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class BookingCreate(BaseModel):
