@@ -516,22 +516,23 @@ const Booking = () => {
                 <Button 
                   type="submit"
                   className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
-                  disabled={!selectedDate || !selectedService || !paymentMethod || submitting}
+                  disabled={!selectedDate || !selectedService || submitting}
                 >
                   {submitting ? (
                     <div className="flex items-center space-x-2">
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                       <span>Processing...</span>
                     </div>
-                  ) : paymentMethod === "stripe" ? (
-                    "Proceed to Payment"
                   ) : (
-                    "Submit Booking Request"
+                    <div className="flex items-center justify-center space-x-2">
+                      <CheckCircle className="h-5 w-5" />
+                      <span>Confirm Booking</span>
+                    </div>
                   )}
                 </Button>
 
                 <p className="text-sm text-gray-500 text-center">
-                  * Required fields. {paymentMethod === "stripe" ? "You'll be redirected to secure payment after booking creation." : "We'll contact you within 24 hours to confirm your booking."}
+                  * Required fields. We'll contact you within 24 hours to confirm your booking and arrange payment details.
                 </p>
               </form>
             </CardContent>
