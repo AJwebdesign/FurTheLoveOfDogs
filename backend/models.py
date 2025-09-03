@@ -93,7 +93,6 @@ class BookingCreate(BaseModel):
     booking_date: date
     special_needs: Optional[str] = None
     emergency_contact: Optional[str] = None
-    payment_method: PaymentMethod
 
 # Unavailable Date Models
 class UnavailableDate(BaseModel):
