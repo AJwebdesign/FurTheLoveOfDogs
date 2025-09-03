@@ -136,6 +136,52 @@ const Booking = () => {
   };
 
   const selectedServiceDetails = services.find(service => service.id === selectedService);
+  const isCageFreeService = selectedServiceDetails?.name === "Cage-Free Sleepovers";
+  
+  // Calculate nights and total for cage-free sleepovers
+  const calculateNights = () => {
+    if (!isCageFreeService || !selectedDate || !selectedPickupDate) return 1;
+    const nights = Math.ceil((selectedPickupDate - selectedDate) / (1000 * 60 * 60 * 24));
+    return Math.max(1, nights);
+  };
+  
+  const calculateTotal = () => {
+    if (!selectedServiceDetails) return 0;
+    return selectedServiceDetails.price * calculateNights();
+  };
+  
+  // Handle date selection for cage-free sleepovers (dual dates)
+  const handleDateSelect = (date) => {
+    if (!isCageFreeService) {
+      // For non-sleepover services, just set the single date
+      setSelectedDate(date);
+      return;
+    }
+    
+    // For cage-free sleepovers, handle dual date selection
+    if (dateSelectionStep === 1) {
+      // First click - set arrival date
+      setSelectedDate(date);
+      setSelectedPickupDate(null); // Reset pickup date
+      setDateSelectionStep(2);
+    } else {
+      // Second click - set pickup date
+      if (date <= selectedDate) {
+        toast.error("Pickup date must be after arrival date");
+        return;
+      }
+      setSelectedPickupDate(date);
+      setDateSelectionStep(1); // Reset for next booking
+    }
+  };
+  
+  // Reset date selection when service changes
+  const handleServiceChange = (serviceId) => {
+    setSelectedService(serviceId);
+    setSelectedDate(null);
+    setSelectedPickupDate(null);
+    setDateSelectionStep(1);
+  };
 
   if (loading) {
     return (
