@@ -146,6 +146,100 @@ const Booking = () => {
     );
   }
 
+  // Show confirmation screen after successful booking
+  if (bookingConfirmed && confirmationDetails) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="shadow-2xl bg-white">
+            <CardContent className="p-12 text-center">
+              <div className="mb-8">
+                <CheckCircle className="h-20 w-20 text-green-500 mx-auto mb-6" />
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">Booking Confirmed! 🎉</h1>
+                <p className="text-xl text-gray-600 mb-8">
+                  Thank you for choosing Fur the Love of Dogs. We can't wait to meet {formData.dogName}!
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-8 mb-8">
+                <h2 className="text-2xl font-bold text-orange-900 mb-6">Booking Details</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                  <div>
+                    <p className="text-gray-600 mb-1">Owner</p>
+                    <p className="font-semibold text-gray-900">{formData.ownerName}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-600 mb-1">Dog</p>
+                    <p className="font-semibold text-gray-900">{formData.dogName}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-600 mb-1">Service</p>
+                    <p className="font-semibold text-gray-900">{confirmationDetails.service_name}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-600 mb-1">Date</p>
+                    <p className="font-semibold text-gray-900">{new Date(confirmationDetails.booking_date).toLocaleDateString()}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-600 mb-1">Total Amount</p>
+                    <p className="font-semibold text-green-600 text-xl">${confirmationDetails.total_amount}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-600 mb-1">Payment</p>
+                    <p className="font-semibold text-gray-900">In-Person</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8 text-left">
+                <h3 className="text-lg font-bold text-blue-900 mb-3">What's Next?</h3>
+                <ul className="space-y-2 text-blue-800">
+                  <li>• We'll contact you within 24 hours to confirm details</li>
+                  <li>• Payment of ${confirmationDetails.total_amount} will be collected when you drop off {formData.dogName}</li>
+                  <li>• Please bring your dog's vaccination records</li>
+                  <li>• Arrive 15 minutes early for check-in</li>
+                </ul>
+              </div>
+
+              <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-8">
+                <h3 className="text-lg font-bold text-orange-900 mb-3">Contact Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-orange-800">
+                  <div>
+                    <p><strong>Phone:</strong> (920) 285-2706</p>
+                    <p><strong>Address:</strong> 106 S 3rd Street</p>
+                    <p>Watertown, WI 53094</p>
+                  </div>
+                  <div>
+                    <p><strong>Hours:</strong></p>
+                    <p>Mon-Wed: 8am-4pm</p>
+                    <p>Thu: 8am-5pm, Fri: 8am-3pm</p>
+                    <p>Sun: By appointment</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  onClick={startNewBooking}
+                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white"
+                >
+                  Make Another Booking
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => window.location.href = '/'}
+                  className="border-orange-500 text-orange-600 hover:bg-orange-50"
+                >
+                  Back to Home
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
