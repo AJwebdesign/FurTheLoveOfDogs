@@ -100,12 +100,12 @@ class BookingCreate(BaseModel):
 # Unavailable Date Models
 class UnavailableDate(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    date: date
+    date: str  # Store as ISO format string
     reason: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class UnavailableDateCreate(BaseModel):
-    date: date
+    date: str  # Accept as ISO format string
     reason: str
 
 # Payment Models
