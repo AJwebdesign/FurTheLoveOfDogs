@@ -214,7 +214,7 @@ const Home = () => {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-3">
                     <div>
-                      <h4 className="font-semibold text-gray-900">{review.name}</h4>
+                      <h4 className="font-semibold text-gray-900">{review.customer_name}</h4>
                       <p className="text-sm text-gray-500">
                         {review.dog_name} • {review.service_type}
                       </p>
