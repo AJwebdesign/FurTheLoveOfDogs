@@ -432,6 +432,69 @@ const Booking = () => {
                   </div>
                 </div>
 
+                {/* Payment Method Selection */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-gray-900 border-b border-orange-200 pb-2">
+                    Payment Method
+                  </h3>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="stripe"
+                        name="paymentMethod"
+                        value="stripe"
+                        checked={paymentMethod === "stripe"}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        className="h-4 w-4 text-orange-600 focus:ring-orange-500"
+                      />
+                      <label htmlFor="stripe" className="flex items-center space-x-3 cursor-pointer">
+                        <CreditCard className="h-5 w-5 text-orange-600" />
+                        <div>
+                          <div className="font-medium text-gray-900">Pay Online with Card</div>
+                          <div className="text-sm text-gray-500">Secure payment with Stripe (Recommended)</div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="in_person"
+                        name="paymentMethod"
+                        value="in_person"
+                        checked={paymentMethod === "in_person"}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        className="h-4 w-4 text-orange-600 focus:ring-orange-500"
+                      />
+                      <label htmlFor="in_person" className="flex items-center space-x-3 cursor-pointer">
+                        <MapPin className="h-5 w-5 text-orange-600" />
+                        <div>
+                          <div className="font-medium text-gray-900">Pay In Person</div>
+                          <div className="text-sm text-gray-500">Pay when you drop off your dog</div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  {paymentMethod === "stripe" && selectedServiceDetails && (
+                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-green-800 text-sm">
+                        <strong>Total: ${selectedServiceDetails.price}</strong> - You'll be redirected to secure payment
+                      </p>
+                    </div>
+                  )}
+
+                  {paymentMethod === "in_person" && (
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                      <p className="text-blue-800 text-sm">
+                        Payment will be collected when you drop off your dog at our facility.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
                 {/* Submit Button */}
                 <Button 
                   type="submit"
