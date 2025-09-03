@@ -514,7 +514,7 @@ const Booking = () => {
                 </Button>
 
                 <p className="text-sm text-gray-500 text-center">
-                  * Required fields. We'll contact you within 24 hours to confirm your booking.
+                  * Required fields. {paymentMethod === "stripe" ? "You'll be redirected to secure payment after booking creation." : "We'll contact you within 24 hours to confirm your booking."}
                 </p>
               </form>
             </CardContent>
