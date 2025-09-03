@@ -22,7 +22,10 @@ from email.mime.multipart import MIMEMultipart
 async def seed_data():
     """Seed the database with initial data"""
     
-    # Now seed fresh data every time
+    # Clear existing data to avoid duplicates
+    await services_collection.delete_many({})
+    await reviews_collection.delete_many({})
+    await unavailable_dates_collection.delete_many({})
     
     # Seed Services
     services_data = [
