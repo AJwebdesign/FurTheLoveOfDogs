@@ -139,7 +139,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {mockServices.map((service) => (
+            {services.map((service) => (
               <Card 
                 key={service.id} 
                 className={`relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 group ${
