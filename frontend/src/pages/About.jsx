@@ -181,8 +181,13 @@ const About = () => {
                     <MapPin className="h-5 w-5 text-orange-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Location</h4>
-                    <p className="text-gray-600">106 S 3rd Street, Watertown, WI 53094</p>
+                    <h4 className="font-semibold text-gray-900">Contact & Location</h4>
+                    <p className="text-gray-600">
+                      <strong>Phone:</strong> (920) 285-2706<br />
+                      <strong>Website:</strong> FurTheLoveOfDogs.com<br />
+                      <strong>Address:</strong> 106 S 3rd Street<br />
+                      Watertown, WI 53094
+                    </p>
                   </div>
                 </div>
                 
