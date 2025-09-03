@@ -101,8 +101,7 @@ async def seed_data():
         
         await services_collection.insert_many(services_data)
     
-    # Seed Reviews (only if services were just created)
-    if not services_exist:
+        # Seed Reviews
         reviews_data = [
         {
             "id": "1",
