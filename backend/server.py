@@ -20,9 +20,9 @@ from emergentintegrations.payments.stripe.checkout import StripeCheckout, Checko
 async def seed_data():
     """Seed the database with initial data"""
     
-    # Check if data already exists
-    if await services_collection.count_documents({}) > 0:
-        return  # Data already seeded
+    # Check if services data already exists
+    services_exist = await services_collection.count_documents({}) > 0
+    unavailable_dates_exist = await unavailable_dates_collection.count_documents({}) > 0
     
     # Seed Services
     services_data = [
