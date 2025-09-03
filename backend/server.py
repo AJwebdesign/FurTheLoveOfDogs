@@ -431,7 +431,7 @@ async def get_checkout_status(request: Request, session_id: str):
                 booking = await get_booking_by_id(transaction.booking_id)
                 if booking:
                     unavailable_date = UnavailableDate(
-                        date=booking.booking_date,
+                        date=booking.booking_date.isoformat() if isinstance(booking.booking_date, date) else booking.booking_date,
                         reason="booked"
                     )
                     await unavailable_dates_collection.insert_one(unavailable_date.dict())
