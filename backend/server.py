@@ -162,20 +162,15 @@ async def seed_data():
         
         await reviews_collection.insert_many(reviews_data)
     
-    # Seed unavailable dates (December 2024 & January 2025)
+    # Seed unavailable dates (September/October 2025 - current dates for demo)
+    from datetime import date
+    today = date.today()
+    
     unavailable_dates_data = [
-        {"id": "1", "date": date(2024, 12, 15).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "2", "date": date(2024, 12, 16).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "3", "date": date(2024, 12, 22).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "4", "date": date(2024, 12, 23).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "5", "date": date(2024, 12, 24).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "6", "date": date(2024, 12, 25).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "7", "date": date(2024, 12, 29).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "8", "date": date(2024, 12, 30).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "9", "date": date(2024, 12, 31).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "10", "date": date(2025, 1, 1).isoformat(), "reason": "holiday", "created_at": datetime.utcnow()},
-        {"id": "11", "date": date(2025, 1, 5).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
-        {"id": "12", "date": date(2025, 1, 6).isoformat(), "reason": "booked", "created_at": datetime.utcnow()}
+        {"id": "1", "date": (today.replace(day=5)).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "2", "date": (today.replace(day=12)).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "3", "date": (today.replace(day=19)).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
+        {"id": "4", "date": (today.replace(day=26)).isoformat(), "reason": "booked", "created_at": datetime.utcnow()},
     ]
     
     await unavailable_dates_collection.insert_many(unavailable_dates_data)
