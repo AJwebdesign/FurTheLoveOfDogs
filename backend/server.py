@@ -221,10 +221,12 @@ bookings_collection = db.bookings
 unavailable_dates_collection = db.unavailable_dates
 payment_transactions_collection = db.payment_transactions
 
-# Stripe integration
-stripe_api_key = os.environ.get('STRIPE_API_KEY')
-if not stripe_api_key:
-    logging.error("STRIPE_API_KEY not found in environment variables")
+# Email configuration (optional - for booking confirmations)
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
+EMAIL_USER = os.environ.get('EMAIL_USER', '')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')
+EMAIL_FROM = os.environ.get('EMAIL_FROM', 'noreply@furthelove.com')
 
 # Create the main app without a prefix
 app = FastAPI()
