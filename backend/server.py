@@ -96,9 +96,9 @@ async def seed_data():
         }
         ]
         
-        await services_collection.insert_many(services_data)
+    await services_collection.insert_many(services_data)
     
-        # Seed Reviews
+    # Seed Reviews
         reviews_data = [
         {
             "id": "1",
