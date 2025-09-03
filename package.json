@@ -1,0 +1,33 @@
+{
+  "name": "fur-the-love-of-dogs",
+  "version": "1.0.0",
+  "description": "Dog kennel booking system for Fur the Love of Dogs in Watertown, WI",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "install-all": "yarn install && cd frontend && yarn install",
+    "build": "cd frontend && yarn build",
+    "start": "cd frontend && yarn start",
+    "dev-backend": "cd backend && python server.py",
+    "test": "cd frontend && yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/FurTheLoveOfDogs.git"
+  },
+  "keywords": [
+    "dog-kennel",
+    "booking-system",
+    "react",
+    "fastapi",
+    "mongodb"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
