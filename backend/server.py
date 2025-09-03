@@ -235,6 +235,7 @@ async def send_booking_confirmation_email(booking: Booking, service: Service):
             <div style="background: linear-gradient(135deg, #f97316, #f59e0b); padding: 20px; text-align: center; color: white;">
                 <h1>🐕 Booking Confirmed!</h1>
                 <p>Thank you for choosing Fur the Love of Dogs</p>
+                <p style="font-size: 14px; color: rgba(255,255,255,0.8);">Visit us at FurTheLoveOfDogs.com</p>
             </div>
             
             <div style="padding: 20px;">
