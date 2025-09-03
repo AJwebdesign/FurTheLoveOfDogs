@@ -111,6 +111,6 @@ export default {
   services: servicesAPI,
   reviews: reviewsAPI,
   booking: bookingAPI,
-  payment: paymentAPI,
+  confirmation: confirmationAPI,
   handleError: handleAPIError
 };
