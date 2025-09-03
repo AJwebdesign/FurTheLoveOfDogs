@@ -392,10 +392,13 @@ async def create_booking_request(booking_data: BookingCreate):
     
     # Add booking date to unavailable dates
     unavailable_date = UnavailableDate(
-        date=booking_date_str,
+        date=booking.booking_date,
         reason="booked"
     )
-    await unavailable_dates_collection.insert_one(unavailable_date.dict())
+    # Convert date objects to ISO format strings for MongoDB
+    unavailable_date_dict = unavailable_date.dict()
+    unavailable_date_dict['date'] = booking.booking_date.isoformat()
+    await unavailable_dates_collection.insert_one(unavailable_date_dict)
     
     # Send confirmation email (if email provided)
     email_sent = False
