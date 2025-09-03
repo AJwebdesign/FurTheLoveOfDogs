@@ -234,11 +234,85 @@ app = FastAPI()
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
-# Initialize Stripe checkout (will be initialized per request)
-def get_stripe_checkout(request: Request):
-    host_url = str(request.base_url)
-    webhook_url = f"{host_url}api/webhook/stripe"
-    return StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+# Email notification functions
+async def send_booking_confirmation_email(booking: Booking, service: Service):
+    """Send booking confirmation email to customer"""
+    if not booking.email or not EMAIL_USER:
+        return False
+    
+    try:
+        # Create email content
+        subject = f"Booking Confirmation - {service.name} for {booking.dog_name}"
+        
+        html_body = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background: linear-gradient(135deg, #f97316, #f59e0b); padding: 20px; text-align: center; color: white;">
+                <h1>🐕 Booking Confirmed!</h1>
+                <p>Thank you for choosing Fur the Love of Dogs</p>
+            </div>
+            
+            <div style="padding: 20px;">
+                <h2 style="color: #f97316;">Booking Details</h2>
+                
+                <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    <p><strong>Owner:</strong> {booking.owner_name}</p>
+                    <p><strong>Dog:</strong> {booking.dog_name}</p>
+                    <p><strong>Service:</strong> {service.name}</p>
+                    <p><strong>Date:</strong> {booking.booking_date}</p>
+                    <p><strong>Total:</strong> ${booking.total_amount:.2f}</p>
+                    <p><strong>Payment:</strong> In-Person</p>
+                </div>
+                
+                <h3 style="color: #f97316;">What's Next?</h3>
+                <ul>
+                    <li>We'll contact you within 24 hours to confirm details</li>
+                    <li>Payment will be collected when you drop off {booking.dog_name}</li>
+                    <li>Please bring your dog's vaccination records</li>
+                    <li>Arrive 15 minutes early for check-in</li>
+                </ul>
+                
+                <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin-top: 20px;">
+                    <h4 style="color: #f97316; margin-top: 0;">Contact Information</h4>
+                    <p><strong>Phone:</strong> (920) 285-2706</p>
+                    <p><strong>Address:</strong> 106 S 3rd Street, Watertown, WI 53094</p>
+                    <p><strong>Hours:</strong> Mon-Wed: 8am-4pm, Thu: 8am-5pm, Fri: 8am-3pm</p>
+                </div>
+                
+                <p style="text-align: center; margin-top: 30px; color: #6b7280;">
+                    We can't wait to meet {booking.dog_name}! 🐾
+                </p>
+            </div>
+        </body>
+        </html>
+        """
+        
+        # Create message
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = subject
+        msg['From'] = EMAIL_FROM
+        msg['To'] = booking.email
+        
+        html_part = MIMEText(html_body, 'html')
+        msg.attach(html_part)
+        
+        # Send email
+        server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
+        server.starttls()
+        server.login(EMAIL_USER, EMAIL_PASSWORD)
+        server.send_message(msg)
+        server.quit()
+        
+        return True
+        
+    except Exception as e:
+        logging.error(f"Failed to send email: {str(e)}")
+        return False
+
+async def log_booking_for_staff(booking: Booking, service: Service):
+    """Log booking details for staff notification"""
+    logging.info(f"NEW BOOKING: {booking.owner_name} - {booking.dog_name} - {service.name} on {booking.booking_date} - Total: ${booking.total_amount:.2f}")
+    # Here you could integrate with SMS service, Slack, or other notification systems
 
 # Services endpoints
 @api_router.get("/services", response_model=List[Service])
