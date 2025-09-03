@@ -416,9 +416,11 @@ async def create_booking_request(booking_data: BookingCreate):
     return {
         "booking_id": booking.id,
         "message": "Booking confirmed successfully! Payment will be collected in person.",
-        "total_amount": service.price,
+        "total_amount": total_amount,
         "service_name": service.name,
-        "booking_date": booking_date_str,
+        "booking_date": booking.booking_date.isoformat(),
+        "pickup_date": booking.pickup_date.isoformat() if booking.pickup_date else None,
+        "nights_count": nights_count,
         "email_sent": email_sent,
         "payment_method": "in_person"
     }
