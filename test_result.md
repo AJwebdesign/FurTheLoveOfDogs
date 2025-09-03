@@ -122,7 +122,7 @@ frontend:
 
   - task: "Booking Process End-to-End Test"
     implemented: true
-    working: false
+    working: true
     file: "/app/frontend/src/pages/Booking.jsx"
     stuck_count: 1
     priority: "high"
@@ -134,6 +134,9 @@ frontend:
         - working: false
         - agent: "testing"
         - comment: "❌ CRITICAL ISSUE: Calendar component not showing available dates properly. Service selection works, form filling works, but date selection fails. Submit button becomes disabled because no date can be selected. Calendar shows 0 days available."
+        - working: true
+        - agent: "testing"
+        - comment: "✅ FIXED: Booking system now working correctly! Service selection dropdown functional, calendar shows available dates with red unavailable dates (5th, 12th, 19th, 25th), form fields working, dual-date selection for sleepovers implemented, no duplicate services. All core booking functionality verified as working."
 
   - task: "UI/UX Theme and Responsiveness Test"
     implemented: true
