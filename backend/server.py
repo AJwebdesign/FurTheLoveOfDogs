@@ -304,6 +304,17 @@ async def send_booking_confirmation_email(booking: Booking, service: Service):
         logging.error(f"Failed to send email: {str(e)}")
         return False
 
+async def log_email_content(booking: Booking, service: Service):
+    """Log email content for demo purposes when email service is not configured"""
+    if not booking.email:
+        return False
+        
+    subject = f"Booking Confirmation - {service.name} for {booking.dog_name}"
+    logging.info(f"📧 EMAIL WOULD BE SENT TO: {booking.email}")
+    logging.info(f"📧 EMAIL SUBJECT: {subject}")
+    logging.info(f"📧 EMAIL CONTENT: Booking confirmed for {booking.owner_name} - {booking.dog_name} - ${booking.total_amount}")
+    return True
+
 async def log_booking_for_staff(booking: Booking, service: Service):
     """Log booking details for staff notification"""
     logging.info(f"NEW BOOKING: {booking.owner_name} - {booking.dog_name} - {service.name} on {booking.booking_date} - Total: ${booking.total_amount:.2f}")
