@@ -24,6 +24,13 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
+# Collections
+services_collection = db.services
+reviews_collection = db.reviews
+bookings_collection = db.bookings
+unavailable_dates_collection = db.unavailable_dates
+payment_transactions_collection = db.payment_transactions
+
 # Stripe integration
 stripe_api_key = os.environ.get('STRIPE_API_KEY')
 if not stripe_api_key:
