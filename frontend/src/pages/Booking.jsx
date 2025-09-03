@@ -80,8 +80,15 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Validation
     if (!selectedDate || !selectedService || !formData.ownerName || !formData.phone || !formData.dogName) {
       toast.error("Please fill in all required fields");
+      return;
+    }
+    
+    // Additional validation for cage-free sleepovers
+    if (isCageFreeService && !selectedPickupDate) {
+      toast.error("Please select both arrival and pickup dates for cage-free sleepovers");
       return;
     }
 
@@ -98,6 +105,7 @@ const Booking = () => {
         dog_age: formData.dogAge || null,
         service_id: selectedService,
         booking_date: selectedDate.toISOString().split('T')[0],
+        pickup_date: selectedPickupDate ? selectedPickupDate.toISOString().split('T')[0] : null,
         special_needs: formData.specialNeeds || null,
         emergency_contact: formData.emergencyContact || null
       };
