@@ -158,9 +158,9 @@ async def seed_data():
             "approved": True,
             "created_at": datetime.utcnow()
         }
-    ]
-    
-    await reviews_collection.insert_many(reviews_data)
+        ]
+        
+        await reviews_collection.insert_many(reviews_data)
     
     # Seed unavailable dates (December 2024 & January 2025)
     unavailable_dates_data = [
