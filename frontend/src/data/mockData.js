@@ -3,59 +3,59 @@
 export const mockServices = [
   {
     id: 1,
-    name: "Overnight Boarding",
-    price: "$100",
+    name: "Cage-Free Sleepovers",
+    price: "$45",
     period: "per night",
-    description: "Premium overnight care in our comfortable, climate-controlled facility",
+    description: "Your dog enjoys a social environment without cages in our private rooms",
     features: [
-      "24/7 supervision",
-      "Individual kennels with outdoor runs",
-      "Daily exercise and playtime",
-      "Feeding per your instructions",
-      "Bedtime treats and stories"
+      "Private room accommodations",
+      "Cage-free social environment",
+      "Second dog: $25/night",
+      "Third dog: $10/night",
+      "Up-to-date vaccinations required"
     ],
     popular: true
   },
   {
     id: 2,
-    name: "Daycare Services",
-    price: "$45",
-    period: "per day",
-    description: "Fun-filled days of socialization and activities",
+    name: "Dog Daycare - Full Time",
+    price: "$25",
+    period: "per day (4+ hours)",
+    description: "Supervised playtime and socialization for 4 hours or more",
     features: [
-      "Group play sessions",
-      "Individual attention",
-      "Outdoor adventures", 
-      "Rest periods",
-      "Pick-up/drop-off flexibility"
+      "Full day of supervised play",
+      "Social interaction with other dogs",
+      "Professional supervision",
+      "Multi-day packages available",
+      "Second dog: $21/day"
     ]
   },
   {
     id: 3,
-    name: "Grooming Services",
-    price: "$75",
-    period: "per session",
-    description: "Professional grooming to keep your pup looking their best",
+    name: "Dog Daycare - Part Time", 
+    price: "$17",
+    period: "per day (up to 4 hours)",
+    description: "Perfect for shorter visits with supervised play and care",
     features: [
-      "Full wash and dry",
-      "Nail trimming",
-      "Ear cleaning",
-      "Brushing and styling",
-      "Flea and tick treatment"
+      "Up to 4 hours of care",
+      "Supervised playtime",
+      "Social interaction",
+      "Flexible scheduling",
+      "With grooming: $17/day"
     ]
   },
   {
     id: 4,
-    name: "Training Programs",
-    price: "$120",
-    period: "per package",
-    description: "Expert training sessions for well-behaved, happy dogs",
+    name: "Fur Salon Grooming",
+    price: "Call for pricing",
+    period: "per session",
+    description: "Professional grooming tailored to your dog's specific needs",
     features: [
-      "Basic obedience training",
-      "Behavioral correction",
-      "Socialization skills",
-      "Take-home practice guides",
-      "Progress tracking"
+      "Professional baths",
+      "Haircuts and styling",
+      "Nail trimming",
+      "Ear cleaning",
+      "Customized grooming plans"
     ]
   }
 ];
