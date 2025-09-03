@@ -498,10 +498,19 @@ const Booking = () => {
                 {/* Submit Button */}
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-200"
-                  disabled={!selectedDate || !selectedService}
+                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+                  disabled={!selectedDate || !selectedService || !paymentMethod || submitting}
                 >
-                  Submit Booking Request
+                  {submitting ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Processing...</span>
+                    </div>
+                  ) : paymentMethod === "stripe" ? (
+                    "Proceed to Payment"
+                  ) : (
+                    "Submit Booking Request"
+                  )}
                 </Button>
 
                 <p className="text-sm text-gray-500 text-center">
